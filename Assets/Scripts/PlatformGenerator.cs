@@ -6,8 +6,11 @@ public class PlatformGenerator : MonoBehaviour {
 	public GameObject thePlatform;
 	public Transform generationPoint;
 	public float distanceBetween;
+	public float distanceBetweenMin;
+	public float distanceBetweenMax;
 
 	private float platformWidth;
+
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +20,7 @@ public class PlatformGenerator : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (transform.position.x < generationPoint.position.x) {
+			distanceBetween = Random.Range (distanceBetweenMin, distanceBetweenMax);
 			transform.position = new Vector3 (transform.position.x + platformWidth + distanceBetween, transform.position.y, transform.position.z);
 			Instantiate (thePlatform, transform.position, transform.rotation);
 		}
